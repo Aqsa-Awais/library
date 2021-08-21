@@ -1,0 +1,31 @@
+version: "3.3"
+
+services:
+  db:
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: "LibraryApp"
+      MYSQL_ROOT_PASSWORD: "root"
+    volumes: 
+      - my-datavolume:/var/lib/mysql 
+    networks: 
+      - msnet
+  library:
+    build: .
+    volumes:
+      - .:/library
+    ports:
+      - "8000:8000"
+    networks: 
+      - msnet
+    depends_on:
+      - db
+
+networks:
+  msnet:
+    driver: bridge
+    
+volumes:
+  my-datavolume:

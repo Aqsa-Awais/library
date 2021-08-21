@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Books</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+  <div class="offset-md-11" style="padding-top:5%">
+      <a href="/login" class="btn btn-info" role="button">Logout</a>
+  </div>
+    <h1 class="text-center" style="padding: 8% 0% 3% 0%;">Welcome to our library App</h1>
+    <table class="table table-bordered text-center">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Books</th>
+            <th scope="col">Authors</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for books in books %}  
+              <tr>
+                <td>{{books.id}}</td>
+                <td>{{books.title}}</td>
+            <td>{{books.author}}</td>
+              </tr>
+            {% endfor %} 
+          </tbody>
+      </table>
+
+      <ul>
+        {% for books in racks %}
+           <li><a href="{% url 'templates:books' %}">{{ books.racks }}</a></li>
+        {% endfor %}
+        </ul>
+</div>
+</body>
+</html>
