@@ -6,6 +6,9 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from .models import books
 
+def index_request(request):
+	return redirect('/login')
+
 def register_request(request):
 	if request.method == "POST":
 		form = NewUserForm(request.POST)
